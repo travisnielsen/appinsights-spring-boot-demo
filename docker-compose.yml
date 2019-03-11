@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+
+  user-service:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    image: trniel/user-service:0.0.1-SNAPSHOT
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: '1000mb'
+          cpus: '0.5'
+        reservations:
+          cpus: '0.1'
+          memory: '250mb'
+
