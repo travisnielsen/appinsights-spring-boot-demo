@@ -1,0 +1,12 @@
+# Default values for social-network.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: "social-network"
+fullnameOverride: "social-network"
+
+nginx-ingress:
+  fullnameOverride: "nginx-ingress"
+
+user-service:
+  fullnameOverride: "user-service"

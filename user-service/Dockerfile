@@ -1,6 +1,8 @@
 # FROM openjdk:11.0.1-jre-slim-sid
 FROM openjdk:8-jre-slim-stretch
 
+EXPOSE 8120/tcp
+
 # Add App Insights Java Agent
 COPY applicationinsights-agent-2.3.1.jar /usr/share/myservice/applicationinsights-agent-2.3.1.jar
 COPY AI-Agent.xml /usr/share/myservice/AI-Agent.xml

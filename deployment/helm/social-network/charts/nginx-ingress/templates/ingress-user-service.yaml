@@ -1,0 +1,24 @@
+# This ingress uses rewrite annotaions
+# See: https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/rewrite/README.md
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.controller.ingressClass }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: user-service
+  namespace: social-network
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /users/?(.*)
+            backend:
+              serviceName: user-service
+              servicePort: 8120
+  # This section is only required if TLS is to be enabled for the Ingress
+  # tls:
+  #     - hosts:
+  #         - www.example.com
+  #       secretName: example-tls

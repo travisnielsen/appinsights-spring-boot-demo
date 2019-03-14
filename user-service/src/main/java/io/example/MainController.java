@@ -45,4 +45,15 @@ public class MainController {
 		LOGGER.trace("Querying all users");
 		return userRepository.findAll();
 	}
+
+	@GetMapping(path="/probe")
+	public @ResponseBody String defaultProbe() {
+		return "Hello";
+	}
+
+	@GetMapping(path="/")
+	public @ResponseBody String homePath() {
+		return "Hello";
+	}
+
 }
