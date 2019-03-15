@@ -11,14 +11,14 @@ metadata:
   namespace: social-network
 spec:
   rules:
-    - http:
+    - host: social.nielski.com
+      http:
         paths:
           - path: /users/?(.*)
             backend:
               serviceName: user-service
               servicePort: 8120
-  # This section is only required if TLS is to be enabled for the Ingress
-  # tls:
-  #     - hosts:
-  #         - www.example.com
-  #       secretName: example-tls
+  tls:
+  - hosts:
+    - social.nielski.com
+    secretName: social-nielski-com

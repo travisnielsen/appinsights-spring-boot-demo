@@ -73,3 +73,8 @@ secrets.yml
 
 # Allow App Insihts agent
 !/user-service/applicationinsights-agent-2.3.1.jar
+
+# No certificates
+*.key
+*.csr
+*.crt
