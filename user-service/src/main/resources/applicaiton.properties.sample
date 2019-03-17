@@ -1,0 +1,25 @@
+server.port=8120
+
+spring.application.name=user-service
+
+spring.cloud.azure.credential-file-path=my.azureauth
+spring.cloud.azure.resource-group=
+spring.cloud.azure.region=
+spring.cloud.azure.eventhub.namespace=
+
+spring.cloud.stream.bindings.input.destination=demo
+spring.cloud.stream.bindings.input.group=$Default
+spring.cloud.stream.bindings.output.destination=demo
+
+azure.application-insights.instrumentation-key=
+azure.application-insights.web.w3c=true
+azure.application-insights.web.enable-w3-c-backcompat-mode=true
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto=update
+
+spring.datasource.url=jdbc:mysql://[NAME].mysql.database.azure.com:3306/[DATABASE_NAME]?useSSL=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+spring.datasource.username=[USER]@[SERVER_NAME]
+spring.datasource.password=[PASSWORD]

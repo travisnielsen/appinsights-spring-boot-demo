@@ -18,9 +18,10 @@ HELP.md
 *.ipr
 
 
-### Credential files
+### Credential and config files
 *.azureauth
 application.properties
+logback-spring.xml
 
 ### Spring Boot
 *#
@@ -78,3 +79,4 @@ secrets.yml
 *.key
 *.csr
 *.crt
+user-service/src/main/resources/logback-spring.xml

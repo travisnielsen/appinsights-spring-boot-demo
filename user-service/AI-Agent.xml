@@ -17,7 +17,14 @@
         <Class name="io.example.MainController">
             <Method name="addNewUser" reportCaughtExceptions="true" reportExecutionTime="true" />
             <Method name="getAllUsers" reportCaughtExceptions="true" reportExecutionTime="true" />
+            <Method name="defaultProbe" reportCaughtExceptions="false" reportExecutionTime="false" />
         </Class>
-
     </Instrumentation>
+    <TelemetryProcessors>
+        <CustomProcessors>
+          <Processor type="io.example.RequestFilter">
+            <Add name="NotNeededUrls" value="/probe"/>
+          </Processor>
+        </CustomProcessors>
+    </TelemetryProcessors>
 </ApplicationInsightsAgent>
