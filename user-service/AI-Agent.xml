@@ -27,4 +27,11 @@
           </Processor>
         </CustomProcessors>
     </TelemetryProcessors>
+    
+    <AgentLogger type="FILE">
+        <Level>TRACE</Level>
+        <UniquePrefix>AIAGENT</UniquePrefix>
+        <BaseFolderPath>/Users/travis/ai-agent</BaseFolderPath>
+    </AgentLogger>
+
 </ApplicationInsightsAgent>

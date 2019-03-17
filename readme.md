@@ -19,7 +19,7 @@ java -jar user-service/target/user-service-0.0.2-SNAPSHOT.jar -javaagent:user-se
 Or you can launch the Docker container:
 
 ```#!/bin/bash
-docker run -d trniel/user-service:0.0.2-SNAPSHOT
+docker run -d -P trniel/user-service:0.0.2-SNAPSHOT
 ```
 
 In either case, the user-service will be available at local host port 8210.
