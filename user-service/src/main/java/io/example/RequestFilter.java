@@ -3,13 +3,10 @@ package io.example;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.microsoft.applicationinsights.extensibility.TelemetryProcessor;
-import com.microsoft.applicationinsights.internal.util.LocalStringsUtils;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 import com.microsoft.applicationinsights.telemetry.Telemetry;
 
@@ -20,19 +17,14 @@ public class RequestFilter implements TelemetryProcessor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    private final Set<String> notNeededUrls = new HashSet<String>();
+    private List<String> exempturls = new ArrayList<>();
 
-    public void setNotNeededUrls(String notNeededUrls) {
-        List<String> notNeededAsList = Arrays.asList(notNeededUrls.split(","));
-        for (String notNeeded : notNeededAsList) {
-            String ready = notNeeded.trim();
-            if (LocalStringsUtils.isNullOrEmpty(ready)) {
-                continue;
-            }
+    // private String exempturls;
+    // public String getUrls() { return this.exempturls; }
 
-            this.notNeededUrls.add(ready);
-            LOGGER.info("Added excluded URL: " + ready);
-        }
+    public RequestFilter() {
+        this.exempturls.add("probe");
+        LOGGER.info("Constructor: Added excluded URL: 'probe' ");
     }
 
     /*
@@ -41,8 +33,6 @@ public class RequestFilter implements TelemetryProcessor {
      */
     @Override
     public boolean process(Telemetry telemetry) {
-
-        LOGGER.trace("received telemetry");
 
         if (telemetry == null) {
             return true;
@@ -63,9 +53,9 @@ public class RequestFilter implements TelemetryProcessor {
         if (uri == null) { return true; }
         else {
             String uriPath = uri.toString();
-            for (String notNeededUri : notNeededUrls) {
+            for (String notNeededUri : exempturls) {
                 if (uriPath.contains(notNeededUri)) {
-                    LOGGER.info("Exempting URI from telemetry: " + notNeededUri);
+                    // LOGGER.trace("Exempting URI from telemetry: " + notNeededUri);
                     return false;
                 }
             }
