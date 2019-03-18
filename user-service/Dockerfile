@@ -10,4 +10,4 @@ ARG JAR_FILE
 COPY target/${JAR_FILE} /usr/share/myservice/myservice.jar
 
 EXPOSE 8120/tcp
-ENTRYPOINT ["java", "-jar", "/usr/share/myservice/myservice.jar", "-javaagent:/usr/share/myservice/applicationinsights-agent-2.3.1.jar"]
+ENTRYPOINT ["java", "-javaagent:/usr/share/myservice/applicationinsights-agent-2.3.1.jar", "-jar", "/usr/share/myservice/myservice.jar"]
