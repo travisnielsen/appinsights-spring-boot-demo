@@ -5,15 +5,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // This tells Hibernate to make a table out of this class
+import java.sql.Timestamp;
+import java.util.Objects;
+
+@Entity
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+	private String firstName;
+	
+	private String lastName;
+	
+	private Timestamp createdAt;
 
-    private String email;
+	private Timestamp updatedAt;
+
+	public User() {
+
+	}
+
+	public User(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.createdAt = new Timestamp(System.currentTimeMillis());
+	}
 
 	public Integer getId() {
 		return id;
@@ -23,20 +40,66 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCreatedAt() {
+		this.createdAt = new Timestamp(System.currentTimeMillis());
 	}
 
-	public String getEmail() {
-		return email;
+	public Timestamp getLastModified() {
+		return updatedAt;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLastModified(Timestamp lastModified) {
+		this.updatedAt = lastModified;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+		this.updatedAt = new Timestamp(System.currentTimeMillis());
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+		this.updatedAt = new Timestamp(System.currentTimeMillis());
+	}
+
+	@Override
+	public String toString() {
+		return "User {" +
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return Objects.equals(id, user.id) &&
+				Objects.equals(firstName, user.firstName) &&
+				Objects.equals(lastName, user.lastName) &&
+				Objects.equals(createdAt, user.createdAt) &&
+				Objects.equals(updatedAt, user.updatedAt);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, firstName, lastName, createdAt, updatedAt);
 	}
 
 }

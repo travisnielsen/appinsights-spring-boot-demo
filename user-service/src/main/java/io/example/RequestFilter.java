@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 public class RequestFilter implements TelemetryProcessor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     private List<String> exempturls = new ArrayList<>();
 

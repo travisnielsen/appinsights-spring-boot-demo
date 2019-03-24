@@ -14,10 +14,16 @@
         <Class name="io.example.KafkaSink">
            <Method name="handleMessage" reportCaughtExceptions="true" reportExecutionTime="true" />
         </Class>
-        <Class name="io.example.MainController">
-            <Method name="addNewUser" reportCaughtExceptions="true" reportExecutionTime="true" />
-            <Method name="getAllUsers" reportCaughtExceptions="true" reportExecutionTime="true" />
-            <Method name="defaultProbe" reportCaughtExceptions="false" reportExecutionTime="false" />
+        <Class name="io.example.UserController">
+            <Method name="createUser" reportCaughtExceptions="true" reportExecutionTime="true" />
+            <Method name="deleteUser" reportCaughtExceptions="true" reportExecutionTime="true" />
         </Class>
     </Instrumentation>
+    <!--
+    <AgentLogger type="FILE">
+        <Level>TRACE</Level>
+        <UniquePrefix>AI</UniquePrefix>
+        <BaseFolderPath>/Users/travis/ai-agent/</BaseFolderPath>
+    </AgentLogger>
+    -->
 </ApplicationInsightsAgent>

@@ -19,7 +19,6 @@ public class KafkaSink {
 
    @StreamListener(Sink.INPUT)
    public void handleMessage(String message) {
-      LOGGER.trace("New message received: " + message);
       LOGGER.info("New message received: " + message);
    }
 }
