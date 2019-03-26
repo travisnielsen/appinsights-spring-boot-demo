@@ -19,7 +19,7 @@ spec:
     - host: social.nielski.com
       http:
         paths:
-          - path: /users/?(.*)
+          - path: /?(.*)
             backend:
               serviceName: user-service
               servicePort: 8120

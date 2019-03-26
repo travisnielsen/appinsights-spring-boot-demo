@@ -44,6 +44,7 @@ public class UserController {
 	public @ResponseBody String createUser (@RequestBody User user) throws Exception {
 
 		boolean success = false;
+		boolean sendCorrelationData = false;
 
 		// Simulate uncaught exception. Any user with a first name starting with the letter M will fail
 		if (user.getFirstName().startsWith("M")) {
@@ -64,11 +65,15 @@ public class UserController {
 		// create a ChildTraceParent from the request parent.
 		String traceParent = TraceContextCorrelation.generateChildDependencyTraceparent();
 
-		// Create ApplicationInsights format child correlationId from W3C format Traceparent.
-		String childId = TraceContextCorrelation.createChildIdFromTraceparentString(traceParent);
-		event.setTraceId(childId);
-
 		long start = System.currentTimeMillis();
+		String childId = "";
+
+		if (traceParent != null) {
+			// Create ApplicationInsights format child correlationId from W3C format Traceparent.
+			childId = TraceContextCorrelation.createChildIdFromTraceparentString(traceParent);
+			event.setTraceId(childId);
+			sendCorrelationData = true;
+		}
 
 		try {
 			messageClient.output().send(MessageBuilder.withPayload(event).build(), 30000L);
@@ -76,12 +81,16 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			long end = System.currentTimeMillis();
-			RemoteDependencyTelemetry rdd = new RemoteDependencyTelemetry("enqueue", "enqueue", new Duration(end - start), success);
-			rdd.setTimestamp(new Date());
-			rdd.setType("Kafka");
-			rdd.setId(childId);
-			telemetryClient.trackDependency(rdd);
+			if (sendCorrelationData) {
+				long end = System.currentTimeMillis();
+				RemoteDependencyTelemetry rdd = new RemoteDependencyTelemetry("enqueue", "enqueue", new Duration(end - start), success);
+				rdd.setTimestamp(new Date());
+				rdd.setType("Kafka");
+				rdd.setId(childId);
+				telemetryClient.trackDependency(rdd);
+			} else {
+				LOGGER.error("Cannot send correlation data with message: generateChildDependencyTraceparent() returned 'null'");
+			}
 		}
 
 		return "Added " + user.toString();
