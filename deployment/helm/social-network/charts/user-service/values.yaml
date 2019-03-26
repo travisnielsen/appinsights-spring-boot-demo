@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: trniel/user-service
-  tag: 0.0.5-SNAPSHOT
+  tag: 0.0.6-SNAPSHOT
   pullPolicy: Always
 
 nameOverride: ""

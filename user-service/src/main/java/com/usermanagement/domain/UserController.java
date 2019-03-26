@@ -19,6 +19,8 @@ import java.util.Optional;
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.Duration;
 import com.microsoft.applicationinsights.telemetry.RemoteDependencyTelemetry;
+import com.microsoft.applicationinsights.web.internal.RequestTelemetryContext;
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
 import com.microsoft.applicationinsights.web.internal.correlation.TraceContextCorrelation;
 
 import com.usermanagement.domain.*;
@@ -61,6 +63,14 @@ public class UserController {
 		}
 
 		UserEvent event = new UserEvent(user, EventType.USER_CREATED);
+
+		// Check to see if ThreadContext has a value
+		RequestTelemetryContext ctx = ThreadContext.getRequestTelemetryContext();
+		if (ctx == null) {
+			LOGGER.error("ThreadContext.RequestTelemetryContext is null");
+		} else {
+			LOGGER.info("ThreadContext.RequestTelemetryContext: " + ctx.toString());
+		}
 
 		// create a ChildTraceParent from the request parent.
 		String traceParent = TraceContextCorrelation.generateChildDependencyTraceparent();
