@@ -10,3 +10,6 @@ nginx-ingress:
 
 user-service:
   fullnameOverride: "user-service"
+
+recommendation-service:
+  fullnameOverride: "recommendation-service"

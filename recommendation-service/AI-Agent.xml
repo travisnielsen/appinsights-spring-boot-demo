@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+    <Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+
+            <!--    Set SQL query duration above which query plan is reported (MySQL, PostgreSQL).
+                    Default is 10000 ms.
+            -->
+           <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
+        </BuiltIn>
+    </Instrumentation>
+</ApplicationInsightsAgent>

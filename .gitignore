@@ -71,6 +71,7 @@ secrets.yml
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
 
 # Allow App Insihts agent
 !/user-service/applicationinsights-agent-2.3.1.jar

@@ -1,4 +1,4 @@
-package io.example;
+package com.recommendations.domain.user;
 
 import java.util.UUID;
 

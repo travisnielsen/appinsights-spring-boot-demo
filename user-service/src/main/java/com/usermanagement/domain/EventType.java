@@ -1,4 +1,4 @@
-package io.example;
+package com.usermanagement.domain;
 
 /**
  * The type of events that affect the state of a {@link User}.

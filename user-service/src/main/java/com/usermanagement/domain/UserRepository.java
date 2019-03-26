@@ -1,4 +1,4 @@
-package io.example;
+package com.usermanagement.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -10,7 +10,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import io.example.User;
+import com.usermanagement.domain.*;
 
 @Repository
 public class UserRepository {

@@ -1,12 +1,12 @@
-# Default values for user-service.
+# Default values for recommendation-service.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: trniel/user-service
-  tag: 0.0.4-SNAPSHOT
+  repository: trniel/recommendation-service
+  tag: 0.0.1-SNAPSHOT
   pullPolicy: Always
 
 nameOverride: ""
@@ -14,7 +14,7 @@ fullnameOverride: ""
 
 service:
   type: ClusterIP
-  port: 8120
+  port: 8121
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -12,11 +12,21 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-UserServiceApplication<user-service>",
+            "name": "UserService",
             "request": "launch",
-            "mainClass": "io.example.UserServiceApplication",
+            "mainClass": "io.example.UserService",
             "projectName": "user-service",
             "args": "--javaagent:/user-service/applicationinsights-agent-2.3.1.jar"
+        },
+        {
+            "type": "java",
+            "name": "RecommendationService",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.recommendations.RecommendationService",
+            "projectName": "recommendation-service",
+            "args": ""
         }
     ]
 }

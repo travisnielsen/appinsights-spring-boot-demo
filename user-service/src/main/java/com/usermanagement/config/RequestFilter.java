@@ -1,4 +1,4 @@
-package io.example;
+package com.usermanagement.config;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 public class RequestFilter implements TelemetryProcessor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilter.class);
 
     private List<String> exempturls = new ArrayList<>();
 

@@ -11,10 +11,7 @@
         </BuiltIn>
 
         <!-- Collect data about caught exceptions and method execution times -->
-        <Class name="io.example.KafkaSink">
-           <Method name="handleMessage" reportCaughtExceptions="true" reportExecutionTime="true" />
-        </Class>
-        <Class name="io.example.UserController">
+        <Class name="com.usermanagement.domain.UserController">
             <Method name="createUser" reportCaughtExceptions="true" reportExecutionTime="true" />
             <Method name="deleteUser" reportCaughtExceptions="true" reportExecutionTime="true" />
         </Class>

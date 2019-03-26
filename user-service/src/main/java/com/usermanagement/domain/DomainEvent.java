@@ -1,4 +1,4 @@
-package io.example;
+package com.usermanagement.domain;
 
 import java.io.Serializable;
 
@@ -14,46 +14,33 @@ public abstract class DomainEvent<T, ID> implements Serializable {
     private ID id;
     private Long createdAt;
     private Long lastModified;
+    private String traceId;
 
-    public DomainEvent() {
-    }
+    public DomainEvent() { }
 
-    public ID getId() {
-        return id;
-    }
+    public ID getId() { return id; }
+    public void setId(ID id) { this.id = id; }
 
-    public void setId(ID id) {
-        this.id = id;
-    }
+    public String getTraceId() { return traceId; }
+    public void setTraceId(String operationId) { this.traceId = operationId; }
 
-    public Long getCreatedAt() {
-        return createdAt;
-    }
+    public Long getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Long createdAt) { this.createdAt = createdAt; }
 
-    public void setCreatedAt(Long createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(Long lastModified) {
-        this.lastModified = lastModified;
-    }
+    public Long getLastModified() { return lastModified; }
+    public void setLastModified(Long lastModified) { this.lastModified = lastModified; }
 
     public abstract T getSubject();
-
     public abstract void setSubject(T subject);
 
     public abstract EventType getEventType();
-
     public abstract void setEventType(EventType eventType);
 
     @Override
     public String toString() {
-        return "DomainEvent{" +
+        return "DomainEvent {" +
                 "id=" + id +
+                "traceId=" + traceId +
                 ", createdAt=" + createdAt +
                 ", lastModified=" + lastModified +
                 '}';

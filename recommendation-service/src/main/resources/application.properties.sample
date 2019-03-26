@@ -1,13 +1,14 @@
-server.port=8120
+server.port=8121
 
-spring.application.name=user-service
+spring.application.name=recommendation-service
 
 spring.cloud.azure.credential-file-path=my.azureauth
 spring.cloud.azure.resource-group=
 spring.cloud.azure.region=
 spring.cloud.azure.eventhub.namespace=
 
-spring.cloud.stream.bindings.output.destination=demo
+spring.cloud.stream.bindings.input.destination=demo
+spring.cloud.stream.bindings.input.group=$Default
 
 azure.application-insights.instrumentation-key=
 azure.application-insights.web.w3c=true
@@ -15,7 +16,6 @@ azure.application-insights.web.enable-w3-c-backcompat-mode=true
 
 spring.datasource.platform=sqlserver
 spring.datasource.initialization-mode=always
-
 spring.datasource.url=jdbc:sqlserver://[your_server_name].database.windows.net:1433;database=[your_database_name];encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 spring.datasource.username=[USER]@[SERVER_NAME]
 spring.datasource.password=[PASSWORD]
