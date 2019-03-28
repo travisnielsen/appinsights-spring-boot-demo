@@ -14,9 +14,9 @@
             "type": "java",
             "name": "UserService",
             "request": "launch",
-            "mainClass": "io.example.UserService",
+            "mainClass": "com.usermanagement.UserService",
             "projectName": "user-service",
-            "args": "--javaagent:/user-service/applicationinsights-agent-2.3.1.jar"
+            "args": "--javaagent:/user-service/applicationinsights-agent-2.4.0-BETA-SNAPSHOT.jar"
         },
         {
             "type": "java",

@@ -5,7 +5,7 @@
 
     <groupId>com.usermanagement</groupId>
     <artifactId>user-service</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>user-service</name>
@@ -27,18 +27,14 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>7.2.1.jre8</version>
         </dependency>
-        <dependency> 
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-spring-boot-metrics-starter</artifactId>
-            <version>2.1.5</version>
-        </dependency>
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-logging-logback</artifactId>
             <version>2.3.1</version>
         </dependency>
-    </dependencies>
 
+    </dependencies>
     <build>
         <plugins>
             <plugin>
